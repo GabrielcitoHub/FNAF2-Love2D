@@ -102,13 +102,15 @@ function self:draw()
         end
     end
 
-    draw(self.camButtons.camsOutline)
+    local x, _ = Center:toGame(0, 0)
+    draw(self.camButtons.camsOutline, x, 0, 0, 1 * Center._SCALE, 1)
 
     oprint("X: "..love.mouse.getX().." Y: "..love.mouse.getY().."", 0, 0)
     print("X: "..love.mouse.getX().." Y: "..love.mouse.getY().."", 0, 0)
 end
 
 function self:mousepressed(x, y, button)
+    x, y = Center:toGame(x, y)
     self.cams = Game.cams
     if not self.cams.up then return end
     -- go through all cams, and if its pressed, set the cam to that cam

@@ -3,7 +3,7 @@ self.assets = Game.assets
 
 function self:update(dt)
     self.cams = Game.cams
-    local mx, my = love.mouse.getPosition()
+    local mx, my = Center:toGame(love.mouse.getPosition())
     
     -- if mouse hovers over mapbutton
     if not self.assets.deepbreathing.audio:isPlaying() then

@@ -3,7 +3,7 @@ self.assets = Game.assets
 
 function self:update(dt)
     self.cams = Game.cams
-    local mx, my = love.mouse.getPosition()
+    local mx, my = Center:toGame(love.mouse.getPosition())
     
     -- if mouse hovers over maskbutton
     if not self.cams.up then

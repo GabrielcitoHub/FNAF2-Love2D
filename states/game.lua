@@ -153,10 +153,10 @@ function game:update(dt)
     self.assets.battery.curFrame = self.batteryAnimationIndex
     --oprint(self.batteryAnimationIndex, self.battery, unpack(self.batteryAnimationIndexs))
 
-    local mx, my = love.mouse.getPosition()
+    local mx, my = Center:toGame(love.mouse.getPosition())
     if mx < 300 then
         officeOffset = officeOffset + 800 * dt
-    elseif mx > getWidth() - 300 then
+    elseif mx > Center._CANVAS_WIDTH - (300 * Center._SCALE) then
         officeOffset = officeOffset - 800 * dt
     end
 
@@ -202,7 +202,8 @@ function game:draw()
         self.assets.mask.y = self:fpsLerp(self.assets.mask.y, 0, love.timer.getDelta(), 0.05)
     end
     self.assets.mask.oy = math.sin(love.timer.getTime()*3) * 10
-    draw(self.assets.mask.img, -100, self.assets.mask.y-self.assets.mask.img:getHeight()-15, 0, 1, 1, 0, self.assets.mask.oy)
+    local x, _ = Center:toGame(-100, 0)
+    draw(self.assets.mask.img, x, self.assets.mask.y-self.assets.mask.img:getHeight()-15, 0, 1 * Center._SCALE, 1, 0, self.assets.mask.oy)
     self.cams:draw()
     draw(self.assets.flashlight.img, 15, 15)
     draw(self.assets.battery.img, self.assets.battery.frames[math.floor(self.assets.battery.curFrame)], 5, 30)

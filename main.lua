@@ -1,3 +1,5 @@
+Center = require "libs.Center"
+Center:setupScreen(love.graphics:getWidth(), love.graphics:getHeight())
 function love.load()
     Gamestate = require "libs.gamestate"
     Timer = require "libs.timer" 
@@ -32,6 +34,9 @@ function love.update(dt)
 end
 
 function love.keypressed(key)
+    if key == "f4" or key == "f11" then
+        love.window.setFullscreen(not love.window.getFullscreen())
+    end
     Gamestate.keypressed(key)
 end
 
@@ -48,5 +53,13 @@ function love.mousemoved(x, y, dx, dy)
 end
 
 function love.draw()
+    Center:start()
+
     Gamestate.draw()
+
+    Center:finish()
+end
+
+function love.resize(width, height)
+  Center:resize(width, height)
 end

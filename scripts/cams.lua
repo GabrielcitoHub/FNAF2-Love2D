@@ -100,7 +100,8 @@ end
 function self:draw()
     if self.up and self.assets.camflip.paused then
         push()
-        translate(self.campan, 0)
+        local x, _ = Center:toGame(self.campan, 0)
+        translate(x, 0)
         local cam = self.cams[self.cur]
         if cam then
             if cam.draw then
@@ -115,7 +116,8 @@ function self:draw()
         pop()
         setColor(1,1,1,self.assets.static.alpha)
         self.assets.static.alpha = Game:fpsLerp(self.assets.static.alpha, 0.45, love.timer.getDelta(), 0.25)
-        draw(self.assets.static.img, self.assets.static.frames[math.floor(self.assets.static.curFrame)], 0, 0)
+        local x, _ = Center:toGame(0, 0)
+        draw(self.assets.static.img, self.assets.static.frames[math.floor(self.assets.static.curFrame)], x, 0, 0, 1 * Center._SCALE, 1)
         setColor(1,1,1,1)
         --setBlendMode("alpha")
         if not self.assets.camblip.paused then
