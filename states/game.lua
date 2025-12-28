@@ -210,8 +210,9 @@ function game:draw()
     printf("Night " .. save.night, 800, 20, 100, "right", 0, 2, 2)
     printf(self.time .. " AM", 800, 60, 100, "right", 0, 2, 2)
 
-    if not self.assets.deepbreathing.audio:isPlaying() then draw(self.assets.mapbutton.img, self.assets.mapbutton.x, self.assets.mapbutton.y) end
-    if not self.cams.up then draw(self.assets.maskbutton.img, self.assets.maskbutton.x, self.assets.maskbutton.y) end
+    self.mapButton:draw()
+
+    self.maskButton:draw()
 
     --draw(self.assets.danger.img, self.assets.danger.frames[math.floor(self.assets.danger.curFrame)], 0, 0)
 end

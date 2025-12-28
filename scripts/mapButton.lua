@@ -33,4 +33,8 @@ function self:update(dt)
     end
 end
 
+function self:draw()
+    if not self.assets.deepbreathing.audio:isPlaying() then draw(self.assets.mapbutton.img, self.assets.mapbutton.x, self.assets.mapbutton.y) end
+end
+
 return self

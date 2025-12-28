@@ -28,4 +28,8 @@ function self:update(dt)
     end
 end
 
+function self:draw()
+    if not self.cams.up then draw(self.assets.maskbutton.img, self.assets.maskbutton.x, self.assets.maskbutton.y) end
+end
+
 return self
