@@ -19,7 +19,7 @@ function love.load()
 
     setDefaultFilter("nearest", "nearest")
 
-    Gamestate.switch(states.menu)
+    Gamestate.switch(states.game)
 end
 
 function love.update(dt)
@@ -29,6 +29,10 @@ function love.update(dt)
     end
     Timer.update(dt)
     Gamestate.update(dt)
+end
+
+function love.keypressed(key)
+    Gamestate.keypressed(key)
 end
 
 function love.mousepressed(x, y, button)
